@@ -1,7 +1,7 @@
 from openai import OpenAI
 import config
 
-client = OpenAI(OPENAI_API_KEY = "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")
+client = OpenAI(api_key=config.OPENAI_API_KEY)
 
 def parse_query(user_query):
     prompt = f"""
