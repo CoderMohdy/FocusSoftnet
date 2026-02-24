@@ -1,10 +1,10 @@
 import streamlit as st
 import json
 
-from modules.query_parser import parse_query
-from modules.company_finder import search_companies
-from modules.qualifier import qualifies
-from modules.email_generator import generate_email
+from query_parser import parse_query
+from company_finder import search_companies
+from qualifier import qualifies
+from email_generator import generate_email
 
 st.title("🤖 Focus Softnet AI Sales Agent")
 
