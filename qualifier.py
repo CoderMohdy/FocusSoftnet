@@ -1,6 +1,8 @@
 from openai import OpenAI
 import config
 
+# FIX: Changed 'OPENAI_API_KEY =' to 'api_key='
+# IMPORTANT: Delete the hardcoded "sk-proj..." key from your file immediately!
 client = OpenAI(api_key=config.OPENAI_API_KEY)
 
 def qualifies(company_name, solution):
