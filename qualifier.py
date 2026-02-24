@@ -1,22 +1,15 @@
-from openai import OpenAI
+from huggingface_hub import InferenceClient
 import config
 
-# FIX: Changed 'OPENAI_API_KEY =' to 'api_key='
-# IMPORTANT: Delete the hardcoded "sk-proj..." key from your file immediately!
-client = OpenAI(api_key=config.OPENAI_API_KEY)
+client = InferenceClient(api_key=config.HF_TOKEN)
 
 def qualifies(company_name, solution):
-    prompt = f"""
-    Company: {company_name}
-    Solution: {solution}
-
-    Does this company likely need this software?
-    Answer YES or NO with one line reason.
-    """
+    prompt = f"Company: {company_name}\nSolution: {solution}\n\nDoes this company likely need this software? Answer YES or NO with one line reason."
 
     res = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}]
+        model="meta-llama/Llama-3.2-3B-Instruct",
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=100
     )
 
     return res.choices[0].message.content

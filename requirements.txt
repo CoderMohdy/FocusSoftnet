@@ -1,5 +1,5 @@
 streamlit
-openai
+huggingface_hub
 requests
 beautifulsoup4
 pandas
